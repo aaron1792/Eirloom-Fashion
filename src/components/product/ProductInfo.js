@@ -90,6 +90,7 @@ const ProductInfo = ({ product }) => {
 
       setCart(addItem.cart);
       setLoading(false);
+      alert(`${addItem.product_name} has been added to the cart`);
     };
     const buttonChange = async () => {
       setQuantity(0);

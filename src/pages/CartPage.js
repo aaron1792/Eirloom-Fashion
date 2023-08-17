@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CartContext, cartContext } from "../context/CartContext";
+import { CartContext } from "../context/CartContext";
 import { Stack, Container, Typography } from "@mui/material";
 import CartItems from "../components/cart/CartItems";
 import CartSummary from "../components/cart/CartSummary";
@@ -16,7 +16,7 @@ const CartPage = () => {
   const renderCart = () => {
     return (
       <Stack
-        direction={{ xs: "column-reverse", md: "row" }}
+        direction={{ xs: "column", md: "row" }}
         gap={10}
         justifyContent="center"
         alignItems={{ xs: "center", md: "flex-start" }}

@@ -60,7 +60,7 @@ const SalesBanner = () => {
           <Box>
             <Button
               component={Link}
-              to=".../catalogue"
+              to="../catalogue"
               sx={{ width: { xs: "100%", md: "auto" } }}
               variant="contained"
               color="secondary"

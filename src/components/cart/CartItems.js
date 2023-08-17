@@ -58,7 +58,7 @@ const CartItems = ({ editing, setEditing }) => {
             elevation={0}
             md={2}
             sx={{
-              width: "70",
+              width: "100%",
               display: "flex",
               gap: 1,
               textDecoration: "none",
