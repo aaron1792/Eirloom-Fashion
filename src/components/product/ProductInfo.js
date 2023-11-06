@@ -17,6 +17,8 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { useParams } from "react-router-dom";
 import commerce from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductInfo = ({ product }) => {
   const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -90,7 +92,9 @@ const ProductInfo = ({ product }) => {
 
       setCart(addItem.cart);
       setLoading(false);
-      alert(`${addItem.product_name} has been added to the cart`);
+      toast.success(`${addItem.product_name} has been added to the cart`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
     };
     const buttonChange = async () => {
       setQuantity(0);
@@ -152,6 +156,7 @@ const ProductInfo = ({ product }) => {
           variant="contained"
           onClick={handleAddToCart}
         >
+          <ToastContainer />
           Add to Cart
         </Button>
       )}
