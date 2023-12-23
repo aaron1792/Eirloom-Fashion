@@ -1,6 +1,6 @@
 import { Stack, Box, Typography, Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useContext, usecontext } from "react";
+import { useContext } from "react";
 import commerce from "../../lib/commerce";
 import { CartContext } from "../../context/CartContext";
 

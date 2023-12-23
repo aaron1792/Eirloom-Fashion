@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { Box, Card, CardMedia, Stack } from "@mui/material";
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import Stack from "@mui/material/Stack";
+
 import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 

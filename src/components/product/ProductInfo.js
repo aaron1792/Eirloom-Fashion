@@ -1,21 +1,21 @@
-import { useState, useEffect, useContext } from "react";
-import {
-  Box,
-  Stack,
-  Typography,
-  Button,
-  ToggleButton,
-  CircularProgress,
-  styled,
-  ToggleButtonGroup,
-} from "@mui/material";
+import { useState, useEffect, useContext, useMemo } from "react";
+import commerce from "../../lib/commerce";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import ToggleButton from "@mui/material/ToggleButton";
+import CircularProgress from "@mui/material/CircularProgress";
+import { styled } from "@mui/material";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+//import {Box,Stack,Typography,Button,ToggleButton,CircularProgress,styled,ToggleButtonGroup,} from "@mui/material";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 import { useParams } from "react-router-dom";
-import commerce from "../../lib/commerce";
+
 import { CartContext } from "../../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -37,9 +37,16 @@ const ProductInfo = ({ product }) => {
   const productSubtitle = product?.[0]?.categories?.[0]?.name
     ? product?.[0]?.categories?.[0]?.name
     : "Product";
-  const productName = product?.[0]?.name;
-  const description = product?.[0]?.description?.replace(/<[^>]*>/g, "");
-  const price = product?.[0]?.price?.formatted_with_symbol;
+  const productName = useMemo(() => product?.[0]?.name, [product]);
+  const description = useMemo(
+    () => product?.[0]?.description?.replace(/<[^>]*>/g, ""),
+    [product]
+  );
+  const price = useMemo(
+    () => product?.[0]?.price?.formatted_with_symbol,
+    [product]
+  );
+
   const sizes = product?.[0]?.variant_groups?.[0]?.options
     ? product?.[0]?.variant_groups?.[0]?.options
     : "";
@@ -83,26 +90,25 @@ const ProductInfo = ({ product }) => {
   };
 
   const handleAddToCart = async () => {
-    const addToCart = async () => {
+    setQuantity(0);
+    setAligment("");
+    setLoading(true);
+
+    try {
       const addItem = await commerce.cart.add(
         id,
         quantity,
         sizes ? variant : null
       );
-
       setCart(addItem.cart);
-      setLoading(false);
       toast.success(`${addItem.product_name} has been added to the cart`, {
         position: toast.POSITION.TOP_CENTER,
       });
-    };
-    const buttonChange = async () => {
-      setQuantity(0);
-      setAligment("");
-      setLoading(true);
-    };
-    buttonChange();
-    addToCart();
+    } catch (error) {
+      console.error("Error adding item to cart:", error);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <Stack spacing={2} alignItems={{ xs: "center", md: "flex-start" }}>
@@ -145,6 +151,7 @@ const ProductInfo = ({ product }) => {
           <AddCircleIcon />
         </Button>
       </Stack>
+      <ToastContainer />
       {loading ? (
         <Box m={2}>
           <CircularProgress />
@@ -156,7 +163,6 @@ const ProductInfo = ({ product }) => {
           variant="contained"
           onClick={handleAddToCart}
         >
-          <ToastContainer />
           Add to Cart
         </Button>
       )}

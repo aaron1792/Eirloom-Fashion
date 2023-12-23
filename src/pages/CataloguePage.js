@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container, container } from "@mui/material";
 import commerce from "../lib/commerce";
+import Container from "@mui/material/Container";
+
 import ProductsList from "../components/product/ProductsList";
 
 const CataloguePage = () => {

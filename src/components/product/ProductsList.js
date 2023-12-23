@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 
-import {
-  Grid,
-  Box,
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
-  Typography,
-} from "@mui/material";
+//import { Grid, Box,Card,CardActionArea,CardMedia,CardContent,Typography,} from "@mui/material";
 
 import { renderLinearLoader } from "../helper/Loaders";
 

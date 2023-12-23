@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
+
 import commerce from "../lib/commerce";
 
 import { useParams } from "react-router-dom";
-import { Container, Stack, Box } from "@mui/material";
+
+import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import { renderLinearLoader } from "../components/helper/Loaders";
 import ProductGallery from "../components/product/ProductGallery";
 import ProductInfo from "../components/product/ProductInfo";
 import ProductAccordion from "../components/product/ProductAccordion";
 import RelatedProducts from "../components/product/RelatedProducts";
+
+//const commerce = lazy(() => import("../lib/commerce"));
 
 const ProductPage = () => {
   const [product, setProducts] = useState([]);
@@ -35,7 +41,7 @@ const ProductPage = () => {
         gap={5}
         mb={10}
         flexDirection={{ xs: "column", md: "row" }}
-        alignItems={{ xs: "center", md: "flex-sart" }}
+        alignItems={{ xs: "center", md: "flex-start" }}
       >
         <Box width={{ xs: "100%", md: "50%" }}>
           {loading ? (
