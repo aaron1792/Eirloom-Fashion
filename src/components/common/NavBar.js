@@ -19,8 +19,8 @@ import { CartContext } from "../../context/CartContext";
 
 const pageLinks = [
   {
-    page: "Catalogue",
-    link: "../catalogue",
+    page: "catalogue",
+    link: "catalogue",
   },
 ];
 
