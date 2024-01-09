@@ -92,7 +92,7 @@ const NavBar = () => {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pageLinks.map(({ page, link }) => (
-                <Link to={link} style={{ textDecoration: "none" }}>
+                <Link to={"/catalogue"} style={{ textDecoration: "none" }}>
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                     <Typography color="secondary" textAlign="center">
                       {page}
