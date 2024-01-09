@@ -19,7 +19,7 @@ import { CartContext } from "../../context/CartContext";
 
 const pageLinks = [
   {
-    page: "catalogue",
+    page: "Catalogue",
     link: "/catalogue",
   },
 ];
@@ -92,17 +92,13 @@ const NavBar = () => {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pageLinks.map(({ page, link }) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography
-                    component="a"
-                    href={link}
-                    sx={{ textDecoration: "none" }}
-                    color="secondary"
-                    textAlign="center"
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
+                <Link to={link} style={{ textDecoration: "none" }}>
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography color="secondary" textAlign="center">
+                      {page}
+                    </Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
